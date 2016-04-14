@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,12 +24,31 @@ public class DataClass
 
     public DataTable GetServices()
     {
-        DataTable tbl = new DataTable();
-
+        DataTable tbl = null;
         string sql = "Select GrantTypeKey, GrantTypeName from GrantType";
         SqlCommand cmd = new SqlCommand(sql, connect);
-        SqlDataReader reader = null;
 
+        tbl = ReadData(cmd);
+
+        return tbl;
+    }
+
+    public DataTable GetGrants(int grantTypeKey)
+    {
+        DataTable grantTbl = null;
+        string sql = "Select GrantRequestDate, GrantRequestExplanation, GrantRequestAmount from GrantRequest Where GrantTypeKey=@Key";
+        SqlCommand cmd = new SqlCommand(sql, connect);
+        cmd.Parameters.AddWithValue("@Key", grantTypeKey);
+
+        grantTbl = ReadData(cmd);
+
+        return grantTbl;
+    }
+
+    private DataTable ReadData(SqlCommand cmd)
+    {
+        SqlDataReader reader = null;
+        DataTable tbl = new DataTable();
         connect.Open();
         reader = cmd.ExecuteReader();
         tbl.Load(reader);
@@ -37,6 +56,9 @@ public class DataClass
         connect.Close();
 
         return tbl;
+
     }
+
+
 
 }//end class
