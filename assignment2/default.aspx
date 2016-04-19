@@ -1,43 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data;//added because we need a data table
-public partial class _Default : System.Web.UI.Page
-{
-    DataClass dc = new DataClass();
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        if(!IsPostBack)
-        LoadDropDownList();
-    }
-    protected void LoadDropDownList()
-    {
-        DataTable tbl = dc.GetAuthor();
-        DropDownList1.DataSource = tbl;
-        DropDownList1.DataTextField ="AuthorName";
-        DropDownList1.DataValueField = "AuthorKey";
-        DropDownList1.DataBind();
-        DropDownList1.Items.Insert(0, "Choose an Author");
-    }
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
-    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        FillGrid();
-    }
+<!DOCTYPE html>
 
-    protected void FillGrid()
-    {
-        if (!DropDownList1.SelectedValue.Equals("Choose an Author"))
-        {
-            int key = int.Parse(DropDownList1.SelectedValue.ToString());
-            DataTable tbl = dc.GetBook(key);
-            GridView1.DataSource = tbl;
-            GridView1.DataBind();
-        }
-    }
-
-
-}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <h1>Book Club</h1>
+        <p>Select an author from the list to see the books available for that author:</p>
+        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"></asp:DropDownList>
+        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+    </div>
+        
+    </form>
+</body>
+</html>
