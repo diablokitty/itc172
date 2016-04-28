@@ -1,0 +1,5 @@
+Tested method for viewing artists, returned list of artists
+Tested method for viewing shows, returned list of shows.
+Tested method for viewing venues, returned list of venues (2).
+Tested method for viewing shows by artist with Taj Mahal, returned one show.
+Tested method for viewing shows by venue with Jazz Alley, returned three shows.
