@@ -1,0 +1,1 @@
+This is the example program for the login registration service - in order for it to work, the Register Exampler master must be downloaded from spconger's repository and running.
