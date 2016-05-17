@@ -1,0 +1,5 @@
+Tested drop down for show info - shows all known shows
+Tested drop down for venues - shows venue names
+Tested grid view for venues via on click button- Comet returns show entries for that venues, Jazz Alley returns show entries for that venue
+Tested drop down for artists - shows artist names
+Tested grid view for artists via click button - Taj Mahal returns shows for that artist
