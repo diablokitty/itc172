@@ -1,0 +1,2 @@
+Tested registration by entering a new venue - Hot login is hot/pass is passHot - returned a value of true
+Tested login by logging in to the newly created venue Hot - returned a value of 42. 
